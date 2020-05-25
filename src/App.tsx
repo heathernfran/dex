@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Layout } from 'element-react'
+import styled from 'styled-components'
 
-function App() {
+import { mixins } from 'styles'
+
+import Content from './components/Content'
+import Favourites from './components/Favourites'
+import Sidebar from './components/Sidebar'
+
+const StyledLayoutCol = styled(Layout.Col)`
+  ${mixins.scrollable};
+`
+
+const StyledLayoutRow = styled(Layout.Row)`
+  height: 100vh;
+`
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledLayoutRow justify="space-between">
+      <h1>Pokedex</h1>
+
+      <StyledLayoutCol span={6}>
+        <Sidebar />
+      </StyledLayoutCol>
+      <StyledLayoutCol span={12}>
+        <Content />
+      </StyledLayoutCol>
+      <StyledLayoutCol span={6}>
+        <Favourites />
+      </StyledLayoutCol>
+    </StyledLayoutRow>
+  )
 }
 
-export default App;
+export default App

@@ -2,7 +2,13 @@
   "name": "logdna-test",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -10,16 +16,24 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.9",
+    "@types/redux-mock-store": "^1.0.2",
+    "babel-runtime": "^6.26.0",
+    "react-hot-loader": "^4.12.21",
+    "redux-mock-store": "^1.5.4"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "element-react": "^1.4.34",
+    "element-theme-default": "^1.4.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-redux": "^7.2.0",
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.0",
     "typescript": "~3.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
