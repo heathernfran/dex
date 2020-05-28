@@ -40,15 +40,6 @@ const Content = ({
       pokemon: pokemon[id],
     })
   }
-  // MessageBox.prompt('Add a memo if you wish:', 'Add to Favourites', {
-  //   confirmButtonText: 'Add',
-  //   cancelButtonText: 'Cancel',
-  // }).then(({ value }: any): void =>
-  //   addFavourite({
-  //     memo: value,
-  //     pokemon: pokemon[id],
-  //   })
-  // )
 
   //
   // ─── RENDER ─────────────────────────────────────────────────────────────────────
