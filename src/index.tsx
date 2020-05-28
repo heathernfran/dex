@@ -9,6 +9,11 @@ import * as serviceWorker from './serviceWorker'
 
 import './styles/tailwind.generated.css'
 
+if (process.env.NODE_ENV !== 'production') {
+  const axe = require('react-axe')
+  axe(React, ReactDOM, 1000)
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
