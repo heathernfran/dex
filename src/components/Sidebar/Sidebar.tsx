@@ -86,8 +86,10 @@ const Sidebar = ({
         event.preventDefault()
       }
     >
+      <label htmlFor="filterPokemon">Filter from list:</label>
       <input
         data-testid="input-filter"
+        id="filterPokemon"
         onChange={handleChange}
         placeholder="Type..."
         title="Filter from the list of available Pokemon types"
