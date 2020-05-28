@@ -1,5 +1,4 @@
 import React from 'react'
-import { Layout } from 'element-react'
 import styled from 'styled-components'
 
 import { mixins } from 'styles'
@@ -8,29 +7,31 @@ import Content from './components/Content'
 import Favourites from './components/Favourites'
 import Sidebar from './components/Sidebar'
 
-const StyledLayoutCol = styled(Layout.Col)`
+const StyledCol = styled.div`
   ${mixins.scrollable};
 `
 
-const StyledLayoutRow = styled(Layout.Row)`
+const StyledRow = styled.div`
   height: 100vh;
 `
 
 const App = (): JSX.Element => {
   return (
-    <StyledLayoutRow justify="space-between">
-      <h1>Pokedex</h1>
+    <StyledRow className="grid grid-cols-3">
+      <div className="col-span-3">
+        <h1 className="text-2xl">Pokedex</h1>
+      </div>
 
-      <StyledLayoutCol span={6}>
+      <StyledCol className="col-span-1">
         <Sidebar />
-      </StyledLayoutCol>
-      <StyledLayoutCol span={12}>
+      </StyledCol>
+      <StyledCol className="col-span-1">
         <Content />
-      </StyledLayoutCol>
-      <StyledLayoutCol span={6}>
+      </StyledCol>
+      <StyledCol className="col-span-1">
         <Favourites />
-      </StyledLayoutCol>
-    </StyledLayoutRow>
+      </StyledCol>
+    </StyledRow>
   )
 }
 

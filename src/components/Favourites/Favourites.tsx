@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card } from 'element-react'
 import styled from 'styled-components'
 
 import { FavouritesType, FavouritesByIdType } from 'dux/favourites/types'
@@ -8,7 +7,7 @@ import { capitalize } from 'lib/textParsers'
 
 import { mixins } from 'styles'
 
-const StyledCard = styled(Card)`
+const StyledCard = styled.div`
   width: 100%;
 `
 
@@ -48,23 +47,25 @@ const Favourites = ({
   //
 
   const renderFavourites = (): JSX.Element[] =>
-    Object.values(favourites).map((favourite: FavouritesType) => (
-      <StyledCard className="box-card" key={favourite.id}>
-        <CardSubheading data-testid="favourite-pokemon">
-          <h3 data-testid="favourite-pokemon-name">
-            {capitalize(favourite.name)}
-          </h3>
-          <button
-            className="el-button el-button--default el-button--small"
-            onClick={() => handleClick(favourite.id)}
-            title="Remove Pokemon from favourites"
-          >
-            <i className="el-icon-close"></i>
-          </button>
-        </CardSubheading>
-        {favourite.memo && <p>Memo: {favourite.memo}</p>}
-      </StyledCard>
-    ))
+    Object.values(favourites).map(
+      (favourite: FavouritesType): JSX.Element => (
+        <StyledCard key={favourite.id}>
+          <CardSubheading data-testid="favourite-pokemon">
+            <h3 data-testid="favourite-pokemon-name">
+              {capitalize(favourite.name)}
+            </h3>
+            <button
+              className="btn btn-blue"
+              onClick={() => handleClick(favourite.id)}
+              title="Remove Pokemon from favourites"
+            >
+              Remove
+            </button>
+          </CardSubheading>
+          {favourite.memo && <p>Memo: {favourite.memo}</p>}
+        </StyledCard>
+      )
+    )
 
   return (
     <StyledFavourites>

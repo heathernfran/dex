@@ -7,7 +7,7 @@ import store from './dux/store'
 
 import * as serviceWorker from './serviceWorker'
 
-import 'element-theme-default'
+import './styles/tailwind.generated.css'
 
 ReactDOM.render(
   <Provider store={store}>

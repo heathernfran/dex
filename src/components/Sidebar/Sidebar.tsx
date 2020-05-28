@@ -68,7 +68,7 @@ const Sidebar = ({
         (pokemon: PokemonObjectType): JSX.Element => (
           <React.Fragment key={parseIdFromUrl(pokemon.url)}>
             <Button
-              className="el-button el-button--default"
+              className="btn"
               data-testid="button-pokemon-type"
               onClick={handleClick}
               type="button"
@@ -87,7 +87,6 @@ const Sidebar = ({
       }
     >
       <input
-        className="el-input"
         data-testid="input-filter"
         onChange={handleChange}
         placeholder="Type..."

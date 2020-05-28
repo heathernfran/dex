@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, MessageBox, Tag } from 'element-react'
 import styled from 'styled-components'
 
 import { PokemonNameByIdType, PokemonNameIdType } from 'dux/pokemon/types'
@@ -8,7 +7,9 @@ import { capitalize } from 'lib/textParsers'
 
 const Button = styled.button`
   align-items: flex-end;
+  cursor: ${({ disabled }: HTMLButtonElement) => disabled && 'not-allowed'};
   display: flex;
+  opacity: ${({ disabled }: HTMLButtonElement) => disabled && '50%'};
 `
 
 export interface DispatchPropsType {
@@ -33,45 +34,47 @@ const Content = ({
   // ─── EVENT LISTENERS ────────────────────────────────────────────────────────────
   //
 
-  const handleClick = (id: number) =>
-    MessageBox.prompt('Add a memo if you wish:', 'Add to Favourites', {
-      confirmButtonText: 'Add',
-      cancelButtonText: 'Cancel',
-    }).then(({ value }: any): void =>
-      addFavourite({
-        memo: value,
-        pokemon: pokemon[id],
-      })
-    )
+  const handleClick = (id: number): void => {
+    addFavourite({
+      memo: '',
+      pokemon: pokemon[id],
+    })
+  }
+  // MessageBox.prompt('Add a memo if you wish:', 'Add to Favourites', {
+  //   confirmButtonText: 'Add',
+  //   cancelButtonText: 'Cancel',
+  // }).then(({ value }: any): void =>
+  //   addFavourite({
+  //     memo: value,
+  //     pokemon: pokemon[id],
+  //   })
+  // )
 
   //
   // ─── RENDER ─────────────────────────────────────────────────────────────────────
   //
 
-  const renderHeader = (id: number): JSX.Element => (
-    <Button
-      className="el-button el-button--default"
-      data-testid="button-add-favourite"
-      disabled={favouritesIds.includes(id)}
-      onClick={() => handleClick(id)}
-      title="Add Pokemon to favourites"
-      value={id}
-    >
-      <i className="el-icon-star-on"></i>
-    </Button>
-  )
-
   const renderPokemonArray = (): JSX.Element[] =>
     Object.values(pokemon).map(
       (pokemon: PokemonNameIdType): JSX.Element => (
-        <Card
-          className="box-card"
-          header={renderHeader(pokemon.id)}
+        <div
+          className="max-w-sm rounded overflow-hidden shadow-lg"
           key={pokemon.id}
         >
+          <Button
+            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            data-testid="button-add-favourite"
+            disabled={favouritesIds.includes(pokemon.id)}
+            onClick={() => handleClick(pokemon.id)}
+            title="Add Pokemon to favourites"
+            value={pokemon.id}
+          >
+            Add favourite
+          </Button>
+
           <h3 data-testid="pokemon-card">{capitalize(pokemon.name)}</h3>
-          <Tag type="gray">{`#${pokemon.id}`}</Tag>
-        </Card>
+          <span className="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{`#${pokemon.id}`}</span>
+        </div>
       )
     )
 
